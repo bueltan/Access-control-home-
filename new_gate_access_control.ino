@@ -214,7 +214,10 @@ void set_in_program_mode() {
   {
     Serial.println("Call to granted function");
     granted();}
-
+  if ( mfrc522.PICC_IsNewCardPresent()) { //If a new PICC placed to RFID reader continue
+         Serial.println("Tag is present, exit loop change password");
+    leds_off();
+    return;}
     char key = customKeypad.getKey();
    if (key)
     {
@@ -499,6 +502,10 @@ void change_password() {
     Serial.println("Call to granted function");
     granted();
      return ;}
+   if ( mfrc522.PICC_IsNewCardPresent()) { //If a new PICC placed to RFID reader continue
+         Serial.println("Tag is present, exit loop change password");
+    leds_off();
+    return;}
   
     char key = customKeypad.getKey();
     if (key)
@@ -543,6 +550,11 @@ void change_password() {
     Serial.println("Call to granted function");
     granted();
      return ;}
+    if ( mfrc522.PICC_IsNewCardPresent()) { //If a new PICC placed to RFID reader continue
+       Serial.println("Tag is present, exit loop change password");
+    leds_off();
+    return;
+  }
     
       char key = customKeypad.getKey();
       if (key)
@@ -592,6 +604,11 @@ void access_with_keypad()
     Serial.println("Call to granted function");
     granted();
     return ;}
+
+    if ( mfrc522.PICC_IsNewCardPresent()) { //If a new PICC placed to RFID reader continue
+             Serial.println("Tag is present, exit loop change password");
+    leds_off();
+    return;}
     char key = customKeypad.getKey();
     if (key)
     {
