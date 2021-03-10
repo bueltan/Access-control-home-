@@ -590,7 +590,8 @@ void access_with_keypad()
     if (digitalRead(btn_inside) == HIGH)
   {
     Serial.println("Call to granted function");
-    granted();}
+    granted();
+    return ;}
     char key = customKeypad.getKey();
     if (key)
     {
